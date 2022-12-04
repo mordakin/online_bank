@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mysite:
+    hostname: bank
+    build:
+      context: ./
+      dockerfile: Docker/Dockerfile.conf
+    volumes:
+      - ./mysite:/my_project
+    command: bash -rc "python3 /my_project/manage.py runserver 0.0.0.0:8000"
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./Docker/default.conf:/etc/nginx/conf.d/default.conf
