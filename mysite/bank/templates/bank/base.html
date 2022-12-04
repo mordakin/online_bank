@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="{% static 'bank/css/styles.css' %}">
     <title>{{title}}</title>
 </head>
-<body>
+<!--style="background-image: url('https://i.postimg.cc/8pr4d6NW/2.jpg')"-->
+<body>;
  <header class="header">
             <div class="container">
                     <nav class="nav">
@@ -19,9 +20,9 @@
 								{% endif %}
 							{% endfor %}
 							{% if request.user.is_authenticated %}
-								<b><li><a style="color:black" href="{% url 'user' %}">{{ user.username }}    |    <a style="color:black" href="{% url 'logout' %}">Exit</a></li></b>
+								<b><li><a style="color:black" href="{% url 'user' %}">{{ user.username }}    |    <a style="color:black" href="{% url 'logout' %}">Выйти</a></li></b>
 							{% else %}
-								<b><li><a style="color:black" href="{% url 'sing_in' %}">Sing in</a> </li></b>
+								<b><li><a style="color:black" href="{% url 'sing_in' %}">Войти</a> </li></b>
 							{% endif %}
 
                         </div>

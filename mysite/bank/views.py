@@ -13,15 +13,15 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 
-menu = [{'title': 'Main Page', 'url_name': 'home'},
-        {'title': 'Registration', 'url_name': 'registration'},
+menu = [{'title': 'Главная страница', 'url_name': 'home'},
+        {'title': 'Регистрация', 'url_name': 'registration'},
 
         ]
 
 
 def index(request):
     info = Users.objects.all()
-    return render(request, 'bank/index.html', {'menu': menu, 'title': 'Main Page', 'info': info})
+    return render(request, 'bank/index.html', {'menu': menu, 'title': 'Главная страница', 'info': info})
 
 
 def user_page(request):
@@ -32,7 +32,7 @@ def user_page(request):
             return redirect('home')
     else:
         form = AddUserForm()
-    return render(request, 'bank/user_page.html', {'form': form, 'menu': menu, 'title': 'registration'})
+    return render(request, 'bank/user_page.html', {'form': form, 'menu': menu, 'title': 'Регистрация'})
 
 
 def transfer(request):
@@ -65,7 +65,7 @@ def transfer(request):
     else:
         form = TransferForm()
     return render(request, 'bank/transfer.html',
-                  {'form': form, 'menu': menu, 'title': 'transfer'})
+                  {'form': form, 'menu': menu, 'title': 'Перевод'})
 
 
 def bringing_in(request):
@@ -86,7 +86,7 @@ def bringing_in(request):
     else:
         form = BringingInForm()
     return render(request, 'bank/bringing_in.html',
-                  {'form': form, 'menu': menu, 'title': 'bringing_in'})
+                  {'form': form, 'menu': menu, 'title': 'Внос средств'})
 
 
 def about_card(request):
@@ -98,7 +98,7 @@ def about_card(request):
             form = AboutCardForm()
             messages.info(request, "Вот данные о карте")
             return render(request, 'bank/about_card.html',
-                          {'form': form, 'menu': menu, 'title': 'about_card', 'info': info})
+                          {'form': form, 'menu': menu, 'title': 'О карте', 'info': info})
         else:
             messages.warning(request, "Пользователя с такими данными не сущестует")
             return redirect('about_card')
